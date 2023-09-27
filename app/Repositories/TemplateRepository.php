@@ -28,7 +28,7 @@ class TemplateRepository
     public function addData($data) {
         try {
             $add_data = Template::create([
-                'data' => $data
+                'data' => json_encode($data)
             ]);
             return $add_data;
         } catch (\Throwable $th) {
