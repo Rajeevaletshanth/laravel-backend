@@ -58,14 +58,27 @@ class TemplateRepository
         }
     }
 
-    public function generatePdf()
+    public function findbyId($id){
+        try {
+            $data = Template::find($id);
+
+            return $data;
+        } catch (\Throwable $th) {
+            return response()->json([
+                'response' => 'error',
+                'status' => $th
+            ]);
+        }
+    }
+
+    public function generatePdf($request)
     {
          // Create a new Dompdf instance
          $dompdf = new Dompdf();
 
          // Load the Blade view into a variable
         //  $view = View::make('pdf')->with('data', $data);
-         $view = View::make('pdf');
+         $view = View::make('pdf')->with('data', $request->data);
  
          // Convert the Blade view to HTML
          $html = $view->render();

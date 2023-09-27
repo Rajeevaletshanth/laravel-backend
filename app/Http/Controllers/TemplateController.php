@@ -32,6 +32,14 @@ class TemplateController extends Controller
         }
     }
 
+    public function findbyId($id){
+        try {
+            return $this->templateRepository->findbyId($id);
+        } catch (\Throwable $th) {
+            return response()->json(['response' => 'error']);
+        }
+    }
+
     public function deleteData($id){
         try {
             return $this->templateRepository->deleteData($id);
@@ -40,9 +48,9 @@ class TemplateController extends Controller
         }
     }
 
-    public function generatePdf(){
+    public function generatePdf(Request $request){
         try {
-            return $this->templateRepository->generatePdf();
+            return $this->templateRepository->generatePdf($request);
         } catch (\Throwable $th) {
             return response()->json(['response' => 'error']);
         }

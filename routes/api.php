@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index', [TemplateController::class, 'index']);
 Route::post('/newdata', [TemplateController::class, 'addNewData']);
+Route::get('/get-data/{id}', [TemplateController::class, 'findbyId']);
 Route::delete('/delete/{id}', [TemplateController::class, 'deleteData']);
-Route::get('/generatePdf', [TemplateController::class, 'generatePdf']);
+Route::post('/generatePdf', [TemplateController::class, 'generatePdf']);
 
